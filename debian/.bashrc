@@ -113,7 +113,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Additions to path variable
-#export PATH=$HOME/bin:$PATH
-export PATH=$PATH:$HOME/phtest/phtest
-[ -r /etc/bash.purityrc ] && . /etc/bash.purityrc
