@@ -11,3 +11,8 @@ source ~/.bashrc
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
+
+# Add Bloomberg-specific proxies if they exist (I work for Bloomberg)
+if [ -f ~/.bloomberg_proxies ]; then
+    . ~/.bloomberg_proxies
+fi
