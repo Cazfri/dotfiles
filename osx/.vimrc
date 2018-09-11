@@ -76,4 +76,4 @@ set expandtab
 set smarttab
 
 " Set colors
-set term=screen-256color
+"set term=screen-256color
