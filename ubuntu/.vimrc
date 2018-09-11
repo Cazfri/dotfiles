@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'itchyny/lightline.vim'
+Plugin 'terryma/vim-multiple-cursors'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,6 +32,9 @@ filetype plugin indent on    " required
 
 " For some reason my backspace doesn't work unless I put this line in.
 set backspace=indent,eol,start
+
+" Dark background
+set background=dark
 
 " Syntax on
 syntax on
@@ -77,3 +81,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
+
+" Have ctags search up directories for tags files
+set tags+=tags;~
