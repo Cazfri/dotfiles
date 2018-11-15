@@ -115,3 +115,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Set GOPATH for go projects
+export GOPATH=~/go

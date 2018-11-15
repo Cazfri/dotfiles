@@ -16,3 +16,6 @@ export PATH
 if [ -f ~/.bloomberg_proxies ]; then
     . ~/.bloomberg_proxies
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
