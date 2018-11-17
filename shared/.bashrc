@@ -115,3 +115,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [[ -d ~/go ]]; then
+    export GOPATH=~/go
+fi
+
