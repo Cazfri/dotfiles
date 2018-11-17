@@ -9,3 +9,5 @@ alias gds="gd --staged"
 alias ggrep="git grep -n"
 alias gld="git log --decorate --oneline --graph" # Also consider setting this to a git alias for "git logdog"
 alias glda="gld --all"
+
+alias py="python3"
