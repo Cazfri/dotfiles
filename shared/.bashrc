@@ -119,3 +119,8 @@ if [[ -d ~/go ]]; then
     export GOPATH=~/go
 fi
 
+if [[ -d ~/bin ]]; then
+    PATH=${HOME}/bin:${PATH}
+    export PATH
+fi
+
