@@ -7,7 +7,9 @@ alias gco="git commit"
 alias gd="git diff"
 alias gds="gd --staged"
 alias ggrep="git grep -n"
-alias gld="git log --decorate --oneline --graph" # Also consider setting this to a git alias for "git logdog"
+alias gld="git log --decorate --oneline --graph" # aka "git logdog"
 alias glda="gld --all"
+alias gfm="git fetch origin master:master" # Only works if fast forwarding master
 
 alias py="python3"
+
