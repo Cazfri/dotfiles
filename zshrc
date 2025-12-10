@@ -100,7 +100,8 @@ if [ $(which brew > /dev/null; echo $?) -eq 0 ]; then
 fi
 
 # Go setup
-PATH="${PATH}:${HOME}/go/bin"
+export GOPATH=${HOME}/go
+export PATH="${PATH}:${GOPATH}/bin"
 
 # Pyenv setup
 if [[ $(which pyenv > /dev/null; echo $?) -eq 0  ]]; then
