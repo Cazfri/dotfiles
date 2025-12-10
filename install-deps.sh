@@ -43,14 +43,18 @@ SHELL_SET=0
 if [ $SHELL = "$(which zsh)" ]; then
     echo "already running in zsh, no need to set default shell"
 else
-    echo "Changing zsh to be default shell"
-    if [ $UNAME = "Darwin" ]; then
-        # chsh needs to be run with sudo on OSX to set to a "non-standard shell"
-        sudo chsh -s $(which zsh) "$USER"
+    if [ $(which chsh > /dev/null; echo $?) -eq 0 ]; then
+        echo "Changing zsh to be default shell"
+        if [ $UNAME = "Darwin" ]; then
+            # chsh needs to be run with sudo on OSX to set to a "non-standard shell"
+            sudo chsh -s $(which zsh) "$USER"
+        else
+            chsh -s $(which zsh)
+        fi
+        SHELL_SET=1
     else
-        chsh -s $(which zsh)
+        echo "chsh does not exist, so not setting default shell!"
     fi
-    SHELL_SET=1
 fi
 
 if [ $SHELL_SET -eq 1 ]; then
