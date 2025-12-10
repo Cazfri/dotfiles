@@ -41,7 +41,7 @@ ZSH_THEME="nmr"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -91,6 +91,34 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
+# Homebrew setup
+if [ $(which brew > /dev/null; echo $?) -eq 0 ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    # Add brew autocompletes
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
+# Go setup
+PATH="${PATH}:${HOME}/go/bin"
+
+# Pyenv setup
+if [[ $(which pyenv > /dev/null; echo $?) -eq 0  ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
+
+# NVM setup
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# Work environment setup
+if [ -f "${HOME}/.work-dotfiles/load-env.sh" ]; then
+    source "${HOME}/.work-dotfiles/load-env.sh"
+fi
+
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
@@ -106,3 +134,5 @@ source $ZSH/oh-my-zsh.sh
 export DOTFILES_DIR=$HOME/.dotfiles
 
 source $DOTFILES_DIR/aliases
+
+alias vim=$(which nvim)
