@@ -8,7 +8,7 @@ echo "Installing oh-my-zsh"
 if [ -d "$HOME/.oh-my-zsh" ]; then
     echo "oh-my-zsh is already installed, doing nothing"
 else
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 fi
 
 echo "Adding custom oh-my-zsh theme"
