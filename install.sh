@@ -1,33 +1,27 @@
 #!/bin/sh
 
-CONFIG_DIR=$1
+set -euo pipefail
 
-if [ -z "$CONFIG_DIR" ]; then
-    echo "First argument must be a matching directory in dotfiles"
-    exit 1
-fi
+DOTFILES_DIR=$(dirname `realpath "$0"`)
 
-CONFIG_DIR_FULL_PATH=$(dirname `realpath "$0"`)/$CONFIG_DIR
+DOTFILE_NAMES="tmux.conf zshrc"
 
-if [ ! -d $CONFIG_DIR_FULL_PATH ]; then
-    echo "Directory $CONFIG_DIR does not exist in dotfile"
-    exit 1
-fi
+for DOTFILE_NAME in $DOTFILE_NAMES; do
+    DOTFILE_SRC="$DOTFILES_DIR/$DOTFILE_NAME"
+    DOTFILE_DEST="$HOME/.$DOTFILE_NAME"
 
-for FILE_FULL_PATH in $CONFIG_DIR_FULL_PATH/*; do
-    FILE="$(basename $FILE_FULL_PATH)"
-    echo "Creating symlink for $FILE"
-
-    if [ -f $HOME/.$FILE ]; then
-        CONFIG_FILE=$HOME/.$FILE
-        if [ -L $CONFIG_FILE ]; then
-            echo "$CONFIG_FILE is a symlink pointing to $(readlink $CONFIG_FILE). Deleting it."
-            rm $CONFIG_FILE
+    if [ -f $DOTFILE_DEST ]; then
+        if [ -L $DOTFILE_DEST ]; then
+            rm $DOTFILE_DEST
         else
-	    echo "$CONFIG_FILE exists, creating backup"
-	    mv $CONFIG_FILE $CONFIG_FILE.backup
+            echo "$DOTFILE_DEST exists, creating backup"
+            mv $DOTFILE_DEST $DOTFILE_DEST.backup
         fi
     fi
 
-    ln -s $FILE_FULL_PATH $HOME/.$FILE
+    # If there's a directory there already, just let ln fail
+
+    echo "linking $DOTFILE_DEST -> $DOTFILE_SRC"
+    ln -s $DOTFILE_SRC $DOTFILE_DEST
 done
+

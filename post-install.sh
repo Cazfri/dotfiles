@@ -1,0 +1,18 @@
+#/bin/sh
+
+set -euo pipefail
+
+DOTFILES_DIR=$(dirname `realpath "$0"`)
+
+echo "Installing oh-my-zsh"
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+echo "Adding custom oh-my-zsh theme"
+ZSH_THEME=nmr.zsh-theme
+ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
+rm -f $ZSH_CUSTOM/themes/$ZSH_THEME && ln -s $DOTFILES_DIR/$ZSH_THEME $ZSH_CUSTOM/themes/$ZSH_THEME
+
+echo "Done!"
+
