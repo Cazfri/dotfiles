@@ -13,10 +13,13 @@ elif [ $UNAME = "Linux" ]; then
         echo "Detected RHEL ($UNAME - $DISTRO) environment"
         UPDATE_CMD="yum update -y"
         INSTALL_CMD="yum install -y"
-    else # TODO: Figure out what Debian looks like
+    elif [ $DISTRO = "debian" ]; then
         echo "Detected Debian ($UNAME - $DISTRO) environment"
         UPDATE_CMD="apt-get update"
         INSTALL_CMD="apt-get install"
+    else
+        echo "Unknown Linux distro ($DISTRO), exiting"
+        exit 1
     fi
 else
     echo "Running in unknown environment ($UNAME), exiting"
