@@ -92,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch $(uname -m)"
 
 # Homebrew setup
-if [ $(which brew > /dev/null; echo $?) -eq 0 ]; then
+if [ $(which brew > /dev/null 2>&1; echo $?) -eq 0 ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     # Add brew autocompletes
@@ -104,7 +104,7 @@ export GOPATH=${HOME}/go
 export PATH="${PATH}:${GOPATH}/bin"
 
 # Pyenv setup
-if [[ $(which pyenv > /dev/null; echo $?) -eq 0  ]]; then
+if [[ $(which pyenv > /dev/null 2>&1; echo $?) -eq 0  ]]; then
     export PYENV_ROOT="$HOME/.pyenv"
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
