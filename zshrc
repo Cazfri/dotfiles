@@ -93,7 +93,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Homebrew setup
 if [ $(which brew > /dev/null 2>&1; echo $?) -eq 0 ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    eval "$(`which brew` shellenv)"
 
     # Add brew autocompletes
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
