@@ -38,7 +38,7 @@ $SUDO_CMD $UPDATE_CMD
 $SUDO_CMD $INSTALL_CMD \
     zsh \
     neovim \
-    tmux \
+    zellij \
     git
 
 echo "Seeing if zsh needs to be set as default terminal"

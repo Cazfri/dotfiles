@@ -25,11 +25,26 @@ for DOTFILE_NAME in $DOTFILE_NAMES; do
     ln -s $DOTFILE_SRC $DOTFILE_DEST
 done
 
-# Install neovim configs in ~/.config
+# Install relevant configs in ~/.config
 mkdir -p $HOME/.config
-NVIM_CONFIG_DEST=$HOME/.config/nvim
-NVIM_CONFIGS_SRC=$DOTFILES_DIR/nvim
+CONFIGDIR_NAMES="nvim zellij alacritty"
 
-echo "linking $NVIM_CONFIG_DEST -> $NVIM_CONFIGS_SRC"
-ln -s $NVIM_CONFIGS_SRC $NVIM_CONFIG_DEST
+for CONFIGDIR_NAME in $CONFIGDIR_NAMES; do
+    CONFIGDIR_DEST="$HOME/.config/$CONFIGDIR_NAME"
+    CONFIGDIR_SRC="$DOTFILES_DIR/$CONFIGDIR_NAME"
+
+    if [ -d $CONFIGDIR_DEST ]; then
+        if [ -L $CONFIGDIR_DEST ]; then
+            rm $CONFIGDIR_DEST
+        else
+            echo "$CONFIGDIR_DEST exists, creating backup"
+            mv $CONFIGDIR_DEST $CONFIGDIR_DEST.backup
+        fi
+    fi
+
+    echo "linking $CONFIGDIR_DEST -> $CONFIGDIR_SRC"
+    ln -s $CONFIGDIR_SRC $CONFIGDIR_DEST
+done
+
+
 

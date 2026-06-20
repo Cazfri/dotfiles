@@ -1,0 +1,21 @@
+[window]
+option_as_alt = "Both"
+
+[keyboard]
+bindings = [
+  # Send escape sequence for jumping one word left (Option + Left Arrow)
+  { key = "Left", mods = "Alt", chars = "\u001bb" },
+
+  # Send escape sequence for jumping one word right (Option + Right Arrow)
+  { key = "Right", mods = "Alt", chars = "\u001bf" },
+
+  # Command + Left → Ctrl-A → beginning of line
+  { key = "Left", mods = "Command", chars = "\u0001" },
+
+  # Command + Right → Ctrl-E → end of line
+  { key = "Right", mods = "Command", chars = "\u0005" },
+
+  # Command + Backspace → Ctrl-U → delete to start of line
+  { key = "Back", mods = "Command", chars = "\u0015" },
+]
+

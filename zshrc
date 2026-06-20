@@ -137,3 +137,6 @@ export DOTFILES_DIR=$HOME/.dotfiles
 source $DOTFILES_DIR/aliases
 
 alias vim=$(which nvim)
+
+# Cmd+Backspace (Ctrl-U): delete from cursor to start of line, not the whole line
+bindkey "^U" backward-kill-line

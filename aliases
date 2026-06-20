@@ -11,3 +11,9 @@ alias ggrep="git grep -n"
 alias gld="git log --decorate --oneline --graph" # aka "git logdog"
 alias glda="gld --all"
 
+# Git worktrees
+alias gw="git worktree"
+alias gwa="git worktree add"
+
+# Zellij
+alias zj="zellij"
