@@ -7,6 +7,9 @@ if [ $UNAME = "Darwin" ]; then
     echo "Detected OSX ($UNAME) environment"
     UPDATE_CMD="brew update"
     INSTALL_CMD="brew install"
+
+    # Install nerdfont
+    $INSTALL_CMD --cask font-meslo-lg-nerd-font
 elif [ $UNAME = "Linux" ]; then
     DISTRO="$(grep -e "^ID=" /etc/os-release | cut -d= -f2 | tr -d '"')"
     if [ $DISTRO = "rhel" ]; then
@@ -21,6 +24,8 @@ elif [ $UNAME = "Linux" ]; then
         echo "Unknown Linux distro ($DISTRO), exiting"
         exit 1
     fi
+
+    # TODO: install Meslo LG font on linux
 else
     echo "Running in unknown environment ($UNAME), exiting"
     exit 1
@@ -39,6 +44,8 @@ $SUDO_CMD $INSTALL_CMD \
     zsh \
     neovim \
     zellij \
+    just \
+    uv \
     git
 
 echo "Seeing if zsh needs to be set as default terminal"
