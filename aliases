@@ -1,4 +1,4 @@
-# Git aliases
+# Git basics
 alias gs="git status"
 alias gb="git branch"
 alias gl="git log"
@@ -14,6 +14,7 @@ alias glda="gld --all"
 # Git worktrees
 alias gw="git worktree"
 alias gwa="git worktree add"
+alias gwl="git worktree list"
 
 # Zellij
 alias zj="zellij"
