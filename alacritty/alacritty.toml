@@ -19,6 +19,9 @@ bindings = [
   { key = "Back", mods = "Command", chars = "\u0015" },
 
   { key = "Return", mods = "Shift", chars = "\u001B\r" },
+
+  { key = ",", mods = "Command", action = "SelectPreviousTab" },
+  { key = ".", mods = "Command", action = "SelectNextTab" },
 ]
 
 [font]
