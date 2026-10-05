@@ -99,6 +99,11 @@ if [ $(which brew > /dev/null 2>&1; echo $?) -eq 0 ]; then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
+# Rust setup
+if [ -f "$HOME/.cargo/env" ]; then
+. "$HOME/.cargo/env"
+fi
+
 # Go setup
 export GOPATH=${HOME}/go
 export PATH="${PATH}:${GOPATH}/bin"
