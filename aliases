@@ -3,18 +3,25 @@ alias gs="git status"
 alias gb="git branch"
 alias gl="git log"
 alias ga="git add"
-alias gch="git checkout"
-alias gco="git commit"
+alias gc="git commit"
 alias gd="git diff"
 alias gds="gd --staged"
-alias ggrep="git grep -n"
+alias gg="git grep -n"
 alias gld="git log --decorate --oneline --graph" # aka "git logdog"
 alias glda="gld --all"
+alias gsw="git switch"
+alias gr="git restore"
 
 # Git worktrees
 alias gw="git worktree"
-alias gwa="git worktree add"
+alias gwa="git worktree add "
 alias gwl="git worktree list"
+alias gwnew='f(){ git worktree add -b "noah/$1" "../$1" && cd "../$1"; }; f'
 
 # Zellij
 alias zj="zellij"
+
+# Python
+alias act="source .venv/bin/activate"
+alias uv-init="uv venv && source .venv/bin/activate && uv sync"
+
